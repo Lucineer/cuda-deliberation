@@ -1,44 +1,92 @@
 # cuda-deliberation
 
-**Consider/Resolve/Forfeit - the decision-making protocol.**
+Consider/Resolve/Forfeit deliberation protocol — multi-agent consensus engine with Bayesian confidence
 
-> An agent that never deliberates is a reflex machine.
-> An agent that always deliberates is paralyzed.
+Part of the Cocapn cognitive layer — how agents think, decide, and learn.
 
-## The Protocol
+## What It Does
 
-Every decision in the fleet goes through three stages:
+### Key Types
 
-1. **Consider** - Generate and evaluate options
-2. **Resolve** - Select the best option above confidence threshold
-3. **Forfeit** - Abandon decisions that can't reach consensus
+- `Proposal` — core data structure
+- `DeliberationEngine` — core data structure
+- `ProposalSummary` — core data structure
 
-### Key Components
+## Quick Start
 
-- **`DeliberationEngine`** - Core engine with proposal lifecycle
-- **`Proposal`** - An option under consideration with confidence
-- **Consensus ratios** - Track agreement/disagreement across agents
-- **Auto-forfeit** - Automatically abandon deadlocked proposals
+```bash
+# Clone
+git clone https://github.com/Lucineer/cuda-deliberation.git
+cd cuda-deliberation
 
-## How Confidence Gates Decisions
+# Build
+cargo build
 
-Proposals below 0.5 confidence are auto-forfeited. Consensus requires 0.85 agreement. This prevents the fleet from acting on uncertain information.
+# Run tests
+cargo test
+```
 
-## Ecosystem Integration
+## Usage
 
-- `cuda-confidence` - Proposal confidence tracking
-- `cuda-filtration` - Budget-based filtering of deliberation scope
-- `cuda-a2a` - Multi-agent deliberation via A2A messages
-- `cuda-resolve-agent` - Deliberative agent with expertise boost
-- `cuda-goal` - Goals drive deliberation priorities
-- `cuda-emotion` - Emotional state modulates deliberation speed
+```rust
+use cuda_deliberation::*;
 
-## See Also
+// See src/lib.rs for full API
+// 8 unit tests included
+```
 
-- [cuda-resolve-agent](https://github.com/Lucineer/cuda-resolve-agent) - Deliberative agent
-- [cuda-convergence](https://github.com/Lucineer/cuda-convergence) - Convergence detection
-- [cuda-filtration](https://github.com/Lucineer/cuda-filtration) - Intelligence filtration
+### Available Implementations
+
+- `Proposal` — see source for methods
+- `DeliberationEngine` — see source for methods
+
+## Testing
+
+```bash
+cargo test
+```
+
+8 unit tests covering core functionality.
+
+## Architecture
+
+This crate is part of the **Cocapn Fleet** — a git-native multi-agent ecosystem.
+
+- **Category**: cognition
+- **Language**: Rust
+- **Dependencies**: See `Cargo.toml`
+- **Status**: Active development
+
+## Related Crates
+
+- [cuda-confidence-cascade](https://github.com/Lucineer/cuda-confidence-cascade)
+- [cuda-reflex](https://github.com/Lucineer/cuda-reflex)
+- [cuda-goal](https://github.com/Lucineer/cuda-goal)
+- [cuda-fusion](https://github.com/Lucineer/cuda-fusion)
+- [cuda-attention](https://github.com/Lucineer/cuda-attention)
+- [cuda-emotion](https://github.com/Lucineer/cuda-emotion)
+- [cuda-narrative](https://github.com/Lucineer/cuda-narrative)
+- [cuda-learning](https://github.com/Lucineer/cuda-learning)
+- [cuda-skill](https://github.com/Lucineer/cuda-skill)
+
+## Fleet Position
+
+```
+Casey (Captain)
+├── JetsonClaw1 (Lucineer realm — hardware, low-level systems, fleet infrastructure)
+├── Oracle1 (SuperInstance — lighthouse, architecture, consensus)
+└── Babel (SuperInstance — multilingual scout)
+```
+
+## Contributing
+
+This is a fleet vessel component. Fork it, improve it, push a bottle to `message-in-a-bottle/for-jetsonclaw1/`.
 
 ## License
 
-MIT OR Apache-2.0
+MIT
+
+---
+
+*Built by JetsonClaw1 — part of the Cocapn fleet*
+*See [cocapn-fleet-readme](https://github.com/Lucineer/cocapn-fleet-readme) for the full fleet roadmap*
